@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Simple.ShoppingBasket.API.Core.DataSession;
 using Simple.ShoppingBasket.API.Core.Models.Mappings;
+using Simple.ShoppingBasket.API.Helpers;
 
 namespace Simple.ShoppingBasket.API {
    public class Startup {
@@ -36,7 +37,7 @@ namespace Simple.ShoppingBasket.API {
          });
 
          // add fake data ?!?
-
+         services.AddFakeData();
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
