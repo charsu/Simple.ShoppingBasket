@@ -15,5 +15,6 @@ namespace Simple.ShoppingBasket.API.Core.DataSession {
          where TDto : IDto;
 
       void Remove<T>(T entity) where T : IDto;
+      void Remove<T>(int id);
    }
 }

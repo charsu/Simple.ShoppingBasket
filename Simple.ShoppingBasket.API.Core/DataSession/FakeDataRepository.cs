@@ -34,10 +34,12 @@ namespace Simple.ShoppingBasket.API.Core.DataSession {
       }
 
       public void Remove<T>(T entity) where T : IDto {
-         if (entity != null) {
-            var set = InternalSet<T>();
-            set.TryRemove(entity.Id, out var t);
-         }
+         Remove<T>(entity?.Id ?? 0);
+      }
+
+      public void Remove<T>(int id) {
+         var set = InternalSet<T>();
+         set.TryRemove(id, out var t);
       }
 
       #region internal 

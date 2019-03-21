@@ -29,8 +29,8 @@ namespace Simple.ShoppingBasket.API.Helpers {
          Enumerable.Range(1, 2).ToList().ForEach(i => {
             dataRepository.Save<ShoppingCartDto, ShoppingCart>(new ShoppingCartDto() {
                Id = i,
-               Products = new List<ProductDto>() {
-                  products.FirstOrDefault(x=>x.Id == i)
+               Products = new List<ShoppingCartProductDto>() {
+                 new ShoppingCartProductDto(){ Id = i , ProductId = i , Quantity = i +1  }
                }
             });
          });
