@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{FF5A22A1-1C4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{C22DD32C-AD2B-45DC-97CF-D6E433495A3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleShoppingBasket.Client", "SimpleShoppingBasket.Client\SimpleShoppingBasket.Client.csproj", "{A29B1D5A-70B1-4323-93E8-0F0FC61AE7C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.ShoppingBasket.Client", "Simple.ShoppingBasket.Client\Simple.ShoppingBasket.Client.csproj", "{A29B1D5A-70B1-4323-93E8-0F0FC61AE7C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.ShoppingBasket.Client.Core", "Simple.ShoppingBasket.Client.Core\Simple.ShoppingBasket.Client.Core.csproj", "{1F96C702-A012-4833-AD7C-8622CAA81433}"
 EndProject

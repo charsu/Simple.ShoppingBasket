@@ -29,6 +29,7 @@ namespace Simple.ShoppingBasket.API.Core.DataSession {
                dto.Id = set.Max(x => x.Key) + 1;
             }
             set[dto.Id] = Mapper.Map<TEntity>(dto);
+            return Mapper.Map<TDto>(set[dto.Id]);
          }
          return dto;
       }

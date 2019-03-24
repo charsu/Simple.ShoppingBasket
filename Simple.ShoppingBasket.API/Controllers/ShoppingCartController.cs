@@ -35,7 +35,7 @@ namespace Simple.ShoppingBasket.API.Controllers {
       /// </summary>
       [HttpPut()]
       public ActionResult<ShoppingCartDto> CreateShoppingCart()
-         => _dataSession.Save<ShoppingCartDto, ShoppingCart>(new ShoppingCartDto() { });
+         => _dataSession.Save<ShoppingCartDto, ShoppingCart>(new ShoppingCartDto() { Products = new List<ShoppingCartProductDto>() });
 
       /// <summary>
       /// Adds or updates a product in the shopping cart 
@@ -44,7 +44,7 @@ namespace Simple.ShoppingBasket.API.Controllers {
       [HttpPost("{id}")]
       public ActionResult<ShoppingCartDto> AddOrUpdateProduct(int id, [FromBody] ShoppingCartProductDto product) {
          var cart = _dataSession.GetSet<ShoppingCartDto, ShoppingCart>().FirstOrDefault(x => x.Id == id);
-         if (cart != null) {
+         if (cart == null) {
             return NotFound();
          }
 
@@ -65,19 +65,19 @@ namespace Simple.ShoppingBasket.API.Controllers {
       }
 
       // DELETE api/ShoppingCart/5
-      [HttpDelete("{id}")]
-      public void DeleteProductFromCart(int id, ShoppingCartProductDto product) {
+      [HttpDelete("{id}/{pid}")]
+      public ActionResult<ShoppingCartDto> DeleteProductFromCart(int id, int pid) {
          var cart = _dataSession.GetSet<ShoppingCartDto, ShoppingCart>().FirstOrDefault(x => x.Id == id);
-         if (cart != null) {
-            return;
+         if (cart == null) {
+            return NotFound();
          }
 
-         var p = cart.Products?.FirstOrDefault(x => x.Id == product.Id);
+         var p = cart.Products?.FirstOrDefault(x => x.ProductId == pid);
          if (p != null) {
             cart.Products.Remove(p);
          }
 
-         _dataSession.Save<ShoppingCartDto, ShoppingCart>(cart);
+         return _dataSession.Save<ShoppingCartDto, ShoppingCart>(cart);
       }
    }
 }

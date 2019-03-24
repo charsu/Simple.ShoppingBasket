@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Simple.ShoppingBasket.Client.Core\Simple.ShoppingBasket.Client.Core.csproj" />
+  </ItemGroup>
+
 </Project>

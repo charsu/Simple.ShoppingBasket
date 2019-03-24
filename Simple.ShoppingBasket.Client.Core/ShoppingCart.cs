@@ -21,34 +21,41 @@ namespace Simple.ShoppingBasket.Client.Core {
 
       public async Task<ShoppingCartDto> CreateShoppingCart(CancellationToken cancellationToken) {
          using (var client = GetClient()) {
-            var response = await client.PutAsync($"/{ShoppingCartUrl}", null, cancellationToken);
+            var response = await client.PutAsync($"{ShoppingCartUrl}", null, cancellationToken).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsAsync<ShoppingCartDto>();
+            return await response.Content.ReadAsAsync<ShoppingCartDto>().ConfigureAwait(false);
          }
       }
 
       public async Task<ShoppingCartDto> AddOrUpdateProduct(int shoppingCartId, ShoppingCartProductDto shoppingCartProductDto, CancellationToken cancellationToken) {
          using (var client = GetClient()) {
-            var response = await client.PostAsync($"{ShoppingCartUrl}/{shoppingCartId}", shoppingCartProductDto, new JsonMediaTypeFormatter(), cancellationToken);
+            var response = await client.PostAsync($"{ShoppingCartUrl}/{shoppingCartId}", shoppingCartProductDto, new JsonMediaTypeFormatter(), cancellationToken).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsAsync<ShoppingCartDto>();
+            return await response.Content.ReadAsAsync<ShoppingCartDto>().ConfigureAwait(false);
          }
       }
 
-      public async Task<List<ProductDto>> GetProducts(CancellationToken cancellationToken) {
+      public async Task<IEnumerable<ProductDto>> GetProducts(CancellationToken cancellationToken) {
          using (var client = GetClient()) {
-            var response = await client.GetAsync($"/{ProductUrl}", cancellationToken);
+            var response = await client.GetAsync($"{ProductUrl}", cancellationToken).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsAsync<List<ProductDto>>();
+            return await response.Content.ReadAsAsync<List<ProductDto>>().ConfigureAwait(false);
          }
       }
 
-      public void RemoveProduct(int shoppingCartId, ShoppingCartProductDto shoppingCartProductDto) {
-         throw new NotImplementedException();
+      public async Task<ShoppingCartDto> RemoveProduct(int shoppingCartId, int productId, CancellationToken cancellationToken) {
+         using (var client = GetClient()) {
+            var response = await client.DeleteAsync($"{ShoppingCartUrl}/{shoppingCartId}/{productId}", cancellationToken).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsAsync<ShoppingCartDto>().ConfigureAwait(false);
+         }
       }
 
-      public void RemoveShoppingCart(int shoppingCartId) {
-         throw new NotImplementedException();
+      public async Task RemoveShoppingCart(int shoppingCartId, CancellationToken cancellationToken) {
+         using (var client = GetClient()) {
+            var response = await client.DeleteAsync($"{ShoppingCartUrl}/{shoppingCartId}", cancellationToken).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
+         }
       }
 
 
