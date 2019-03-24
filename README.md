@@ -304,5 +304,13 @@ Note: unit tests have been neglected as they would not offer any added value at 
 
 ## Simple.ShoppingBasket.Client
 
-A .NET Core 2.2 console application that is attempting to consume a service `IShoppingCart` to facilitate and prove the usage of the WebAPI .
+A .NET Core 2.2 console application that is attempting to consume a service `IShoppingCart` to facilitate and prove the usage of the WebAPI :
+
+```dotnet
+      Task<ShoppingCartDto> CreateShoppingCart(CancellationToken cancellationToken);
+      Task<IEnumerable<ProductDto>> GetProducts(CancellationToken cancellationToken);
+      Task<ShoppingCartDto> AddOrUpdateProduct(int shoppingCartId, ShoppingCartProductDto shoppingCartProductDto, CancellationToken cancellationToken);
+      Task<ShoppingCartDto> RemoveProduct(int shoppingCartId, int productId, CancellationToken cancellationToken);
+      Task RemoveShoppingCart(int shoppingCartId, CancellationToken cancellationToken);
+```
 
