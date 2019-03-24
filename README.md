@@ -306,7 +306,7 @@ Note: unit tests have been neglected as they would not offer any added value at 
 
 A .NET Core 2.2 console application that is attempting to consume a service `IShoppingCart` to facilitate and prove the usage of the WebAPI :
 
-```dotnet
+```chsarp
       Task<ShoppingCartDto> CreateShoppingCart(CancellationToken cancellationToken);
       Task<IEnumerable<ProductDto>> GetProducts(CancellationToken cancellationToken);
       Task<ShoppingCartDto> AddOrUpdateProduct(int shoppingCartId, ShoppingCartProductDto shoppingCartProductDto, CancellationToken cancellationToken);
